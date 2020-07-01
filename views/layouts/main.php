@@ -5,10 +5,9 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+use yii\helpers\Url;
 use app\assets\AppAsset;
+
 
 AppAsset::register($this);
 ?>
@@ -19,62 +18,55 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
+<!-- Navbar start -->
+<header>
+    <div class="navbar-fixed ">
+        <nav class="z-depth-2">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo" id="main-title">Ugandochka</a>
+                <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down navMenu">
+                    <li><a href="<?= Url::to(['home/index'])?>">Home</a></li>
+                    <li><a href="<?= Url::to(['teacher/index'])?>">Teachers</a></li>
+                    <li><a href="<?= Url::to(['course/index'])?>">Courses</a></li>
+                    <li><a href="<?= Url::to(['contact/index']) ?>">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Sign up</a></li>
+                </ul>
+            </div>
+        </nav>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
     </div>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+    <ul id="mobile" class="sidenav">
+        <li><a href="<?= Url::to('home/index') ?>">Home</a></li>
+        <li><a href="<?= Url::to('teacher/index') ?>">Teachers</a></li>
+        <li><a href="<?= Url::to(['course/index'])?>">Courses</a></li>
+        <li><a href="<?= Url::to('contact/index') ?>">Contact</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Sign up</a></li>
+    </ul>
+</header>
+<!-- Navbar end -->
+<?= $content ?>
+<!--Footer start-->
+<footer class="z-depth-2">
+    <div class="footer-menu">
+        <a href="<?= Url::to('home/index') ?>">About us</a>
+        <a href="<?= Url::to('contact/index') ?>">Contact</a>
+        <a href="<?= Url::to('contact/index') ?>">Email</a>
+        <div class="copyright">
+            <p>© Ugandosiki 2020</p>
+        </div>
     </div>
 </footer>
-
+<!--Footer end-->
 <?php $this->endBody() ?>
 </body>
 </html>
