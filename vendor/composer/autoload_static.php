@@ -81,6 +81,7 @@ class ComposerStaticInit7022dc497df4362d73b604674f188496
         ),
         'F' => 
         array (
+            'Fxp\\Composer\\AssetPlugin\\' => 25,
             'Faker\\' => 6,
         ),
         'E' => 
@@ -227,6 +228,10 @@ class ComposerStaticInit7022dc497df4362d73b604674f188496
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'Fxp\\Composer\\AssetPlugin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fxp/composer-asset-plugin',
         ),
         'Faker\\' => 
         array (
